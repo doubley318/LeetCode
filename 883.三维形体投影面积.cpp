@@ -1,10 +1,13 @@
-#include "mylib.h"
+/*
+ * @lc app=leetcode.cn id=883 lang=cpp
+ *
+ * [883] 三维形体投影面积
+ */
 
-class Solution
-{
+// @lc code=start
+class Solution {
 public:
-    int projectionArea(vector<vector<int>> &grid)
-    {
+    int projectionArea(vector<vector<int>>& grid) {
         int down = 0, left = 0, front = 0;
         for (int i = 0; i < grid.size(); i++)
         {
@@ -22,9 +25,5 @@ public:
         return down + left + front;
     }
 };
+// @lc code=end
 
-int main()
-{
-
-    return 0;
-}
