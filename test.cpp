@@ -1,47 +1,83 @@
 #include "mylib.h"
 
-void Mul(double *x, double *res, int *pai1, int *pai2, double *a, double *b, int x_r, int x_c)
+/*class Solution
 {
-    for (int i = 0; i < x_r; i++)
+public:
+    bool mycomp(string s1, string s2)
     {
-        for (int j = 0; j < x_c; j++)
-            res[i * x_c + j] = (double)a[i] / b[j] * x[(pai1[i] - 1) * x_c + (pai2[j] - 1)];
+        int t1 = s1.find_first_of(" ");
+        int t2 = s2.find_first_of(" ");
+        if (s1.substr(t1) > s2.substr(t2))
+            return false;
+        else if (s1.substr(t1) < s2.substr(t2))
+            return true;
+        else
+        {
+            if (s1.substr(0, t1) > s2.substr(0, t2))
+                return false;
+            else
+                return true;
+        }
+    }
+
+    bool comp(string s1, string s2)
+    {
+        return s1 > s2;
+    }
+
+    vector<string> reorderLogFiles(vector<string> &s)
+    {
+        int r = s.size() - 1;
+        int count = 0;
+        for (int i = s.size() - 2; i >= 0; i--)
+        {
+            if (isdigit(s[r][s[r].length() - 1]))
+                r--, count++;
+            else if (isdigit(s[i][s[i].length() - 1]))
+            {
+                string s = s[i];
+                s[i] = s[r];
+                s[r] = s;
+                r--;
+                count++;
+            }
+        }
+        stable_sort(s.begin(), s.begin() + s.size() - count, mycomp);
+        return s;
+    }
+};
+*/
+
+bool comp(string s1, string s2)
+{
+    return (s1 > s2);
+}
+bool c(int n1, int n2)
+{
+    return (n1 < n2);
+}
+bool mycomp(string s1, string s2)
+{
+    int t1 = 0;
+    int t2 = 0;
+    if (s1.substr(t1) > s2.substr(t2))
+        return false;
+    else if (s1.substr(t1) < s2.substr(t2))
+        return true;
+    else
+    {
+        if (s1.substr(0, t1) > s2.substr(0, t2))
+            return false;
+        else
+            return true;
     }
 }
-
 int main()
 {
-    /*
-    double x[6] = {1, 1, 1, 1, 1, 1};
-    double res[6] = {0};
-    int x_r = 2;
-    int x_c = 3;
-    double a[2] = {2, 3};
-    double b[3] = {4, 5, 6};
-    int pai1[2] = {2, 1};
-    int pai2[3] = {2, 1, 3};
-    */
-    /*
-    for (int i = 0; i < x_r; i++)
-    {
-        for (int j = 0; j < x_c; j++)
-            res[i * x_c + j] = (double)a[i] / b[j] * x[(pai1[i] - 1) * x_c + (pai2[j] - 1)];
-    }
-    */
-    double x[6] = {1, 1, 1, 1, 1, 1};
-    double res[6] = {0};
-    int x_r = 2;
-    int x_c = 3;
-    double a[2] = {2, 3};
-    double b[3] = {4, 5, 6};
-    int pai1[2] = {2, 1};
-    int pai2[3] = {2, 1, 3};
-    Mul(x, res, pai1, pai2, a, b, x_r, x_c);
-    for (int i = 0; i < x_r; i++)
-    {
-        for (int j = 0; j < x_c; j++)
-            cout << res[i * x_c + j] << ",";
-        cout << endl;
-    }
+    string s = "asjdiajis";
+    s = s.substr(s.find_first_of('j')+1);
+    cout << s << endl;
+    s = s.substr(s.find_first_of('j')+1);
+    cout << s << endl;
     return 0;
 }

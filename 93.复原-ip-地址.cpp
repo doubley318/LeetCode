@@ -1,6 +1,9 @@
 /*
  * @lc app=leetcode.cn id=93 lang=cpp
- *
+这类题目的首先需要确定的是：
+写出合格的判定；
+然后写出不合格的判定
+最后写出递归的算法
  * [93] 复原 IP 地址
  */
 
@@ -9,43 +12,31 @@ class Solution
 {
 public:
     vector<string> ans;
-    vector<string> restoreIpAddresses(string s)
+    void backtrace(string s, int index, int count, string str)
     {
-        string a;
-        int t = 0, l = 1, num = -1;
-        small(s, t, a, l, num);
-        return ans;
+        if (count == 4 && s.size() == index)
+            ans.push_back(str.substr(0, str.size() - 1));
+        if (count == 4 || s.size() == index)
+            return;
+        for (int i = 1; i <= 3; i++)
+        {
+            if (s.size() < index + i)
+                return;
+            if (s[index] == '0' && i != 1)
+                return;
+            if (i == 3 && s.substr(index, i) > "255")
+                return;
+            str += s.substr(index, i) + ".";
+            backtrace(s, index + i, count + 1, str);
+            str = str.substr(0, str.size() - i - 1);
+        }
     }
 
-    void small(string s, int t, string a, int l, int num)
+    vector<string> restoreIpAddresses(string s)
     {
-        if (l == 4 && t == s.length())
-        {
-            a = a + to_string(num);
-            ans.push_back(a);
-            return;
-        }
-        if (num == 0 && s[t] - '0' == 0)
-            return;
-        if (num == -1)
-            num = 0;
-        int tmp = s[t] - '0' + num * 10;
-        if (l == 4)
-        {
-            small(s, t + 1, a, l, tmp);
-            if (tmp > 255)
-                return;
-        }
-        else
-        {
-            if (tmp > 255)
-            {
-                a = a + to_string(num) + ".";
-                small(s, t, a, l + 1, -1);
-            }
-            else
-                small(s, t + 1, a, l, tmp);
-        }
+        string str = "";
+        backtrace(s, 0, 0, str);
+        return ans;
     }
 };
 // @lc code=end
