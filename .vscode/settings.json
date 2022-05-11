@@ -30,6 +30,7 @@
         "stack": "cpp",
         "type_traits": "cpp",
         "xhash": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "random": "cpp"
     }
 }
