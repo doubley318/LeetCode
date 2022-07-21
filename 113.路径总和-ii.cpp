@@ -18,8 +18,32 @@
  */
 class Solution {
 public:
-    vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+    int target;
+    vector<vector<int>> ans;
 
+    vector<vector<int>> pathSum(TreeNode *root, int targetSum)
+    {
+        if (!root)
+            return ans;
+        target = targetSum;
+        small(root, 0, {});
+        return ans;
+    }
+
+    void small(TreeNode *root, int sum, vector<int> tmp)
+    {
+        sum += root->val;
+        tmp.push_back(root->val);
+        if (!root->left && !root->right)
+        {
+            if (sum == target)
+                ans.push_back(tmp);
+            return;
+        }
+        if (root->right)
+            small(root->right, sum, tmp);
+        if (root->left)
+            small(root->left, sum, tmp);
     }
 };
 // @lc code=end

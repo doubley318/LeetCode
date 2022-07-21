@@ -31,6 +31,9 @@
         "type_traits": "cpp",
         "xhash": "cpp",
         "string": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "cmath": "cpp",
+        "unordered_set": "cpp",
+        "xiosbase": "cpp"
     }
 }
