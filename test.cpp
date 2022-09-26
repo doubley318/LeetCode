@@ -75,9 +75,6 @@ bool mycomp(string s1, string s2)
 int main()
 {
     string s = "asjdiajis";
-    s = s.substr(s.find_first_of('j')+1);
-    cout << s << endl;
-    s = s.substr(s.find_first_of('j')+1);
     cout << s << endl;
     return 0;
 }
