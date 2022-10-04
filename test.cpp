@@ -74,7 +74,7 @@ bool mycomp(string s1, string s2)
 }
 int main()
 {
-    string s = "asjdiajis";
-    cout << s << endl;
+    string s = "asss";
+    cout << s.insert(2, "44") << endl;
     return 0;
 }
