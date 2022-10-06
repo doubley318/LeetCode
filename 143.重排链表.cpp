@@ -1,7 +1,21 @@
-#include "mylib.h"
+/*
+ * @lc app=leetcode.cn id=143 lang=cpp
+ *
+ * [143] 重排链表
+ */
 
-class Solution
-{
+// @lc code=start
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
 public:
     ListNode *reverseList(ListNode *head)
     {
@@ -55,9 +69,5 @@ public:
             tmp->next = nullptr;
     }
 };
+// @lc code=end
 
-int main()
-{
-    Solution so;
-    return 0;
-}

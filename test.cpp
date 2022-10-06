@@ -75,6 +75,6 @@ bool mycomp(string s1, string s2)
 int main()
 {
     string s = "asss";
-    cout << s.insert(2, "44") << endl;
+    cout << s.find("s") << s.substr(1) << s.substr(0, 1);
     return 0;
 }
