@@ -51,6 +51,15 @@ struct Node
     }
 };
 
+struct DLinkedNode
+{
+    int key, value;
+    DLinkedNode *prev;
+    DLinkedNode *next;
+    DLinkedNode() : key(0), value(0), prev(nullptr), next(nullptr) {}
+    DLinkedNode(int _key, int _value) : key(_key), value(_value), prev(nullptr), next(nullptr) {}
+};
+
 /*struct Node
 {
     int val;
