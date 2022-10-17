@@ -1,5 +1,10 @@
-#include "mylib.h"
+/*
+ * @lc app=leetcode.cn id=904 lang=cpp
+ *
+ * [904] 水果成篮
+ */
 
+// @lc code=start
 class Solution
 {
 public:
@@ -38,11 +43,4 @@ public:
         return max(ret, m);
     }
 };
-
-int main()
-{
-    Solution so;
-    vector<int> fruits = {3, 3, 3, 1, 2, 1, 1, 2, 3, 3, 4};
-    cout << so.totalFruit(fruits);
-    return 0;
-}
+// @lc code=end

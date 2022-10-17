@@ -6,6 +6,7 @@ bool compare(int a, int b)
 
 int main()
 {
-    
+    int i = 11;
+    cout << (i++ * 1 / 3) << endl;
     return 0;
 }
