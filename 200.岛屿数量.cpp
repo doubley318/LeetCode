@@ -1,5 +1,10 @@
-#include "mylib.h"
+/*
+ * @lc app=leetcode.cn id=200 lang=cpp
+ *
+ * [200] 岛屿数量
+ */
 
+// @lc code=start
 class Solution
 {
 public:
@@ -31,15 +36,4 @@ public:
         return ans;
     }
 };
-
-int main()
-{
-    Solution so;
-    vector<vector<char>> grid = {
-        {'1', '1', '0', '0', '0'},
-        {'1', '1', '0', '0', '0'},
-        {'0', '0', '1', '0', '0'},
-        {'0', '0', '0', '1', '1'}};
-    cout << so.numIslands(grid);
-    return 0;
-}
+// @lc code=end

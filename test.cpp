@@ -6,7 +6,9 @@ bool compare(int a, int b)
 
 int main()
 {
-    int i = 11;
-    cout << (i++ * 1 / 3) << endl;
+    queue<int> a;
+    a.push(1);
+    a.push(2);
+    cout << a.back();
     return 0;
 }
