@@ -1,6 +1,11 @@
-#include "mylib.h"
-class Solution
-{
+/*
+ * @lc app=leetcode.cn id=481 lang=cpp
+ *
+ * [481] 神奇字符串
+ */
+
+// @lc code=start
+class Solution {
 public:
     int magicalString(int n)
     {
@@ -32,10 +37,5 @@ public:
         return ret;
     }
 };
+// @lc code=end
 
-int main()
-{
-    Solution so;
-    cout << so.magicalString(14);
-    return 0;
-}
