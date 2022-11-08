@@ -1,5 +1,10 @@
-#include "mylib.h"
+/*
+ * @lc app=leetcode.cn id=316 lang=cpp
+ *
+ * [316] 去除重复字母
+ */
 
+// @lc code=start
 class Solution
 {
 public:
@@ -40,11 +45,4 @@ public:
         return ret;
     }
 };
-
-int main()
-{
-    Solution so;
-    string s = "abacb";
-    cout << so.removeDuplicateLetters(s);
-    return 0;
-}
+// @lc code=end
