@@ -19,14 +19,16 @@
 class Solution
 {
 public:
-    long long pre = LONG_MIN;
+    long long t = LONG_MIN;
     bool isValidBST(TreeNode *root)
     {
-        if (!root)
+        if (root == nullptr)
             return true;
-        if (!isValidBST(root->left) || root->val <= pre)
+        if (!isValidBST(root->left))
             return false;
-        pre = root->val;
+        if (t >= root->val)
+            return false;
+        t = root->val;
         return isValidBST(root->right);
     }
 };

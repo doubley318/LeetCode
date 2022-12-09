@@ -13,31 +13,30 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-class Solution {
+class Solution
+{
 public:
-    ListNode *detectCycle(ListNode *head) {
+    ListNode *detectCycle(ListNode *head)
+    {
         ListNode *fast = head;
         ListNode *slow = head;
-        while (fast != nullptr)
+        while (true)
         {
-            if (fast->next != nullptr)
+            if (fast && fast->next)
                 fast = fast->next->next;
             else
                 return nullptr;
             slow = slow->next;
-            if (slow == fast)
+            if (fast == slow)
                 break;
         }
-        if (fast == nullptr)
-            return nullptr;
         fast = head;
         while (fast != slow)
         {
-            slow = slow->next;
             fast = fast->next;
+            slow = slow->next;
         }
         return slow;
     }
 };
 // @lc code=end
-

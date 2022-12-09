@@ -20,12 +20,18 @@ class Solution
 public:
     ListNode *reverseList(ListNode *head)
     {
-        if (head == nullptr || head->next == nullptr)
+        if (head == nullptr)
             return head;
-        ListNode *later = reverseList(head->next);
-        head->next->next = head;
-        head->next = nullptr;
-        return later;
+        ListNode *tmp = nullptr;
+        while (head != nullptr && head->next != nullptr)
+        {
+            ListNode *t = head->next;
+            head->next = tmp;
+            tmp = head;
+            head = t;
+        }
+        head->next = tmp;
+        return head;
     }
 };
 // @lc code=end

@@ -5,19 +5,21 @@
  */
 
 // @lc code=start
-class Solution {
+class Solution
+{
 public:
-    int maxProfit(vector<int>& prices) {
-        int res = 0;
+    int maxProfit(vector<int> &prices)
+    {
+        int ret = 0;
         int tmp = 0;
         for (int i = 1; i < prices.size(); i++)
         {
-            int t = prices[i] - prices[i - 1];
-            tmp = tmp + t > 0 ? tmp + t : 0;
-            res = max(tmp, res);
+            tmp += prices[i] - prices[i - 1];
+            if (tmp < 0)
+                tmp = 0;
+            ret = max(tmp, ret);
         }
-        return res;
+        return ret;
     }
 };
 // @lc code=end
-
