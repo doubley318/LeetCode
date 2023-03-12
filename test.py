@@ -1,38 +1,28 @@
 import numpy as np
+from mpl_toolkits import mplot3d
+import matplotlib.pyplot as plt
 
-# x = np.array([[1, 2, 3], [4, 5, 6]])
-# y = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
-# print("z=xy")
-# print(np.dot(x, y))
+x = np.linspace(-5, 5, 100)
+y = np.linspace(-5, 5, 100)
+X, Y = np.meshgrid(x, y)
 
-# a = np.array([2, 3])
-# b = np.array([4, 5, 6])
-# c = np.array([7, 8, 9, 10])
-# print("aT*b")
-# print(np.dot(a.reshape(2, 1), b.reshape(1, 3)))
+fig = plt.figure()
+ax = plt.axes(projection='3d')
+ax.plot_surface(X, Y, Z=3 - X - Y, color='blue', alpha=0.6)
 
-# x_apo = x + np.dot(a.reshape(2, 1), b.reshape(1, 3))
-# print("x_apo")
-# print(x_apo)
-
-# y_apo = y + np.dot(b.reshape(3, 1), c.reshape(1, 4))
-# print("y_apo")
-# print(y_apo)
-
-# z_apo = np.dot(x_apo, y_apo)
-# print("z_apo")
-# print(z_apo)
-
-# xy = z_apo - np.dot(np.dot(x, b.reshape(3, 1)), c.reshape(1, 4))
-# xy = xy - np.dot(np.dot(a.reshape(2, 1), b.reshape(1, 3)), y)
-# xy = xy - np.dot(
-#     np.dot(np.dot(a.reshape(2, 1), b.reshape(1, 3)), b.reshape(3, 1)),
-#     c.reshape(1, 4))
-# print(xy)
-
-# xy = x + np.dot(a.reshape(2, 1), b.reshape(1, 3))
-# xy = np.dot(xy, b.reshape(3, 1))
-# xy = np.dot(xy, c.reshape(1, 4))
-# xy = xy + np.dot(a.reshape(2, 1), np.dot(b.reshape(1, 3), y))
-# xy = z_apo - xy
-# print(xy)
+x = np.linspace(0, 2 * np.pi, 100)
+y = np.linspace(0, np.pi, 100)
+X = 3 * np.outer(np.cos(x), np.sin(y))
+Y = 3 * np.outer(np.sin(x), np.sin(y))
+z = 3 * np.outer(np.ones(np.size(x)), np.cos(y))
+# fig = plt.figure()
+# ax = plt.axes(projection='3d')
+ax.plot_surface(X, Y, z, color='red', alpha=0.6)
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
+ax.view_init(
+    elev=15,  # 仰角
+    azim=60  # 方位角
+)
+plt.show()

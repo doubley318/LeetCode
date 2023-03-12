@@ -1,5 +1,10 @@
-#include "mylib.h"
+/*
+ * @lc app=leetcode.cn id=2379 lang=cpp
+ *
+ * [2379] 得到 K 个黑块的最少涂色次数
+ */
 
+// @lc code=start
 class Solution
 {
 public:
@@ -22,14 +27,9 @@ public:
                 tmp--;
             res = min(res, tmp);
             r++;
-            l--;
+            l++;
         }
         return res;
     }
 };
-
-int main()
-{
-    Solution so;
-    return 0;
-}
+// @lc code=end
