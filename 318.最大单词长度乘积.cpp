@@ -5,34 +5,22 @@
  */
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    int word2int(string words)
+    int maxProduct(vector<string>& words)
     {
-        int ret = 0;
-        for (int i = 0; i < words.size(); i++)
+        int ret = 0, n = words.size();
+        vector<int> nums(n, 0);
+        auto [] string2int(string & s)
         {
-            int tmp = 1;
-            tmp = tmp << (words[i] - 'a');
-            ret = ret | tmp;
-        }
-        return ret;
-    }
-
-    int maxProduct(vector<string> &words)
-    {
-        int ret = 0;
-        vector<int> w(words.size(), 0);
-        w[0] = word2int(words[0]);
-        for (int i = 1; i < words.size(); i++)
-        {
-            w[i] = word2int(words[i]);
-            for (int j = i - 1; j >= 0; j--)
-            {
-                if ((w[i] & w[j]) == 0)
-                    ret = max(ret, (int)(words[i].size() * words[j].size()));
+            int tmp = 0;
+            for (char& c : s) {
+                tmp |= ((c - '0') << 1);
             }
+            return tmp;
+        };
+        for (int i = 0; i < n; i++) {
+            nums[i] = string2int(word[i]);
         }
         return ret;
     }
