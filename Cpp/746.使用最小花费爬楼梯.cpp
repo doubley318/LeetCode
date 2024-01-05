@@ -5,21 +5,17 @@
  */
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    int minCostClimbingStairs(vector<int> &cost)
+    int minCostClimbingStairs(vector<int>& cost)
     {
-        int pre = 0;
-        int mid = cost[0];
-        int ret = 0;
-        for (int i = 1; i < cost.size(); i++)
-        {
-            ret = min(pre + cost[i], mid + cost[i]);
-            pre = mid;
-            mid = ret;
+        int tmp = 0, l = 0, r = 0;
+        for (int i = 0; i < cost.size(); i++) {
+            tmp = min(l + cost[i], r + cost[i]);
+            l = r;
+            r = tmp;
         }
-        return min(pre, mid);
+        return min(l, r);
     }
 };
 // @lc code=end

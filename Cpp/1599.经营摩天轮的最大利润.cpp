@@ -5,55 +5,69 @@
  */
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    int minOperationsMaxProfit(vector<int> &customers, int boardingCost, int runningCost)
+    bool check(const vector<int>& mo)
     {
-        int income = 0, res = -1;
+        for (const int& i : mo) {
+            if (i != 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    int minOperationsMaxProfit(vector<int>& customers, int boardingCost, int runningCost)
+    {
+        // 模拟？
         int n = customers.size();
-        int server = 0, lost = 0;
-        for (int i = 0; i < n; i++)
-        {
-            lost += customers[i];
-            if (lost < 4)
-            {
-                server += lost;
-                lost = 0;
+        int retTimes = -1;
+        int maxIncome = 0, tmpIncome = 0;
+        vector<int> mo(4, 0);
+        int point = 0;
+        int remind = 0;
+        for (int i = 0; i < n; i++) {
+            remind += customers[i];
+            if (remind >= 4) {
+                mo[(point) % 4] = 4;
+                remind -= 4;
+                tmpIncome += boardingCost * 4 - runningCost;
+                point++;
+            } else if (remind > 0) {
+                mo[(point) % 4] = remind;
+                tmpIncome += boardingCost * remind - runningCost;
+                point++;
+                remind = 0;
+            } else if (check(mo)) {
+                tmpIncome -= runningCost;
+                mo[(point) % 4] = 0;
+                point++;
             }
-            else
-            {
-                server += 4;
-                lost -= 4;
-            }
-            int tmp = server * boardingCost - runningCost * (i + 1);
-            if (tmp > income)
-            {
-                income = tmp;
-                res = i + 1;
-            }
-        }
-        while (lost)
-        {
-            n = n + 1;
-            if (lost < 4)
-            {
-                server += lost;
-                lost = 0;
-            }
-            else
-            {
-                lost -= 4;
-                server += 4;
-            }
-            int tmp = server * boardingCost - runningCost * n;
-            if (tmp > income)
-            {
-                income = tmp;
-                res = n;
+            if (tmpIncome > maxIncome) {
+                maxIncome = tmpIncome;
+                retTimes = point;
             }
         }
-        return res;
+        while (remind >= 4) {
+            remind -= 4;
+            mo[(point) % 4] = 4;
+            tmpIncome += boardingCost * 4 - runningCost;
+            point++;
+            if (tmpIncome > maxIncome) {
+                maxIncome = tmpIncome;
+                retTimes = point;
+            }
+        }
+        if (remind > 0) {
+            tmpIncome += boardingCost * remind - runningCost;
+            point++;
+            if (tmpIncome > maxIncome) {
+                maxIncome = tmpIncome;
+                retTimes = point;
+            }
+        }
+
+        return retTimes;
     }
 };
 // @lc code=end
