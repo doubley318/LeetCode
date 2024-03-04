@@ -5,21 +5,20 @@
  */
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    int findPeakElement(vector<int> &nums)
+    int findPeakElement(vector<int>& nums)
     {
-        int l = 0, r = nums.size() - 1, m = 0;
-        while (l < r)
-        {
-            m = (l + r) / 2;
-            if (nums[m] < nums[m + 1])
-                l = m + 1;
-            else
-                r = m;
+        int left = 0, right = nums.size() - 1;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] < nums[mid + 1]) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
         }
-        return l;
+        return left;
     }
 };
 // @lc code=end
